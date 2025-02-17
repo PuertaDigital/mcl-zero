@@ -192,9 +192,9 @@
                   {%- endif -%}
                 </p>
               {%- when 'description' -%}
-                {%- if product.description != blank -%}
+                {%- if product.metafields.custom.description_hook != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                    {{ product.description }}
+                    {{ product.metafields.custom.description_hook }}
                   </div>
                 {%- endif -%}
               {%- when 'sku' -%}
@@ -669,6 +669,12 @@
         </section>
       </div>
     </div>
+
+    {%- if product.description != blank -%}
+      <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+        {{ product.description }}
+      </div>
+    {%- endif -%}
 
     {% render 'product-media-modal', variant_images: variant_images %}
 
